@@ -12,8 +12,6 @@
 - [Data Sources](#data-sources)
 - [ETL Pipeline](#etl-pipeline)
 - [Data Modeling](#data-modeling)
-- [Analytics & Reporting](#analytics--reporting)
-- [Getting Started](#getting-started)
 - [License](#license)
 
 ---
@@ -45,8 +43,6 @@ Bronze  →  Silver  →  Gold
 | **Silver** | Cleaned, standardized, and normalized data. Resolves duplicates, nulls, and type issues. |
 | **Gold** | Business-ready data modeled as a star schema. Optimized for analytical queries and reporting. |
 
-> Architecture diagrams, data flow maps, and ERDs are available in the [`docs/`](./docs) folder.
-
 ---
 
 ## Project Structure
@@ -55,14 +51,6 @@ Bronze  →  Silver  →  Gold
 sql-data-warehouse-project/
 │
 ├── datasets/                   # Source CSV files (ERP and CRM raw data)
-│
-├── docs/                       # Project documentation
-│   ├── data_architecture.drawio
-│   ├── data_catalog.md
-│   ├── data_flow.drawio
-│   ├── data_models.drawio
-│   ├── etl.drawio
-│   └── naming-conventions.md
 │
 ├── scripts/                    # T-SQL scripts for all layers
 │   ├── bronze/                 # Load raw data into Bronze layer
@@ -106,63 +94,6 @@ The Gold layer is modeled as a **Star Schema**, designed for efficient analytica
 
 - **Fact Tables** — Transactional records (e.g., sales facts)
 - **Dimension Tables** — Descriptive context (e.g., customers, products, dates)
-
-Refer to `docs/data_models.drawio` for the full entity-relationship diagram.
-
----
-
-## Analytics & Reporting
-
-SQL-based reports are included that deliver insights across two key domains:
-
-**Customer Analytics**
-- Customer segmentation by region and revenue
-- Buying behavior and order frequency
-
-**Product Analytics**
-- Top-performing products by sales volume and revenue
-- Category-level performance comparisons
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- SQL Server (2019 or later recommended)
-- SQL Server Management Studio (SSMS) or Azure Data Studio
-
-### Steps
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/AyushRana47/sql-data-warehouse-project.git
-   cd sql-data-warehouse-project
-   ```
-
-2. **Initialize the database**  
-   Run the database initialization script to create the `DataWarehouse` database and schemas (`bronze`, `silver`, `gold`):
-   ```sql
-   -- Run in SSMS
-   scripts/init_database.sql
-   ```
-
-3. **Load Bronze layer**  
-   Execute the scripts in `scripts/bronze/` to ingest raw CSV data.
-
-4. **Transform to Silver layer**  
-   Execute the scripts in `scripts/silver/` to clean and standardize the data.
-
-5. **Build Gold layer**  
-   Execute the scripts in `scripts/gold/` to create the analytical star schema.
-
-6. **Run tests**  
-   Validate data quality using the scripts in `tests/`.
-
-7. **Explore analytics**  
-   Query the Gold layer tables for business insights.
-
----
 
 ## License
 
